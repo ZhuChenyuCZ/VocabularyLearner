@@ -1,0 +1,5 @@
+                             VocabularyLearner v0.0.1 Demo
+
+Hello,this is a tool to learn and remember English words.
+And Here we are going to help you.
+And we hope you can help us.
