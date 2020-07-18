@@ -1,9 +1,12 @@
 a
-1
-12
+0
+一个
 apple
 0
 苹果
 opulent
 0
 富裕
+ficklness
+0
+浮躁

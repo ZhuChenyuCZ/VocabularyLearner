@@ -1,5 +1,7 @@
 import SQL
 import base
+import random
+import math
 
 def ShowTheWelcomePage():
     from WelcomePage import ShowTheWelcomePage
@@ -54,16 +56,47 @@ def AddWords():
     SQL.Type.append('0\n')
     SQL.Meaning.append(NewWordsMeaning)
 
+def ChooseMode():
+    print('添加新单词输入1 ， 测试以往单词输入2 ,退出请输入 0')
+    base.ModeType = int(input('Mode:'))
+    if base.ModeType!=1 and base.ModeType!=2:
+        base.ModeType = -1
+
 def main():
     ShowTheWelcomePage()
     
     SQLRead()
     #SignInOrUp()
-    for i in range(0,SQL.TotalLen):
+    """for i in range(0,SQL.TotalLen):
         print(SQL.Words[i],end='')
     AddWords()
     AddWords()
-    SQLWrite()
+    SQLWrite()"""
+
+    running = True
+
+    while running:
+        SQLWrite()
+        if base.ModeType == -1:
+            running = False
+            break
+        elif base.ModeType == 0:
+            ChooseMode()
+            continue
+        elif base.ModeType == 1:
+            #添加新单词模式
+            AddWords()
+            base.ModeType = 0
+        elif base.ModeType == 2:
+            #测试单词模式
+            TestNum = int(input('想要测试多少个单词：'))
+            for i in range(0,TestNum):
+                NowWords = math.floor(random.random()*SQL.TotalLen - 0.001)
+                print('       %s' % SQL.Words[NowWords] , end='')
+                TempStr = str(input('输入任何字符查看解释'))
+                print('       %s' % SQL.Meaning[NowWords])
+                TempStr = str(input('输入任何字符测试下一个'))
+            base.ModeType = 0
 
 if __name__ == '__main__':
     main()
