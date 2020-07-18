@@ -24,7 +24,7 @@ def SQLRead():
     while SQL.TotalLen*3<TempLen:
         SQL.TotalLen+=1
         SQL.Words.append('save')
-        SQL.Type.append('0')
+        SQL.Type.append(0)
         SQL.Meaning.append('占位')
     
     i=0
@@ -47,7 +47,10 @@ def SQLWrite():
     textfile.close()
 
 def AddWords():
-    NewWords = str(input('Add a new Word: '))
+    NewWords = str(input('Add a new Word(write No to exit): '))
+    if NewWords == 'no' or NewWords == 'No' or NewWords == 'NO':
+        base.ModeType = 0
+        return
     NewWords += '\n'
     NewWordsMeaning = str(input('What\'s it mean: '))
     NewWordsMeaning += '\n'
@@ -86,7 +89,7 @@ def main():
         elif base.ModeType == 1:
             #添加新单词模式
             AddWords()
-            base.ModeType = 0
+            #base.ModeType = 0
         elif base.ModeType == 2:
             #测试单词模式
             TestNum = int(input('想要测试多少个单词：'))
