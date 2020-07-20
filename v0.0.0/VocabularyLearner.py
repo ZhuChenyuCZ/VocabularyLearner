@@ -80,8 +80,8 @@ def InfiniteTestMode():
     i=0
     while i<SQL.TotalLen:
         NowID = math.floor(random.random()*SQL.TotalLen-0.0001)
-        """while SQL.Hash[NowID] == 1:
-            NowID = math.floor(random.random()*SQL.TotalLen-0.001)"""
+        while SQL.Hash[NowID] == 1:
+            NowID = math.floor(random.random()*SQL.TotalLen-0.001)
         print('NowID:%d' % NowID)
         print('请问这个单词是什么意思: %s' % SQL.Words[NowID] , end = '')
         TempStr = str(input('输入任何字符查看解释'))
